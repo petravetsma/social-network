@@ -1,11 +1,9 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
-import {addPostActionCreator, addPostTextActionCreator} from "../../../redux/state";
+import {addPostActionCreator, addPostTextActionCreator} from "../../../redux/profile-reducer";
 
 const MyPosts = (props) => {
-  const newPostTextarea = React.createRef();
-
   const postElements = props.posts.map(v => <Post text={v.text} likes={v.likes}/>);
 
   const addPost = () => {
@@ -20,9 +18,9 @@ const MyPosts = (props) => {
     <div>
       <div>
         <div>
-          <textarea ref={newPostTextarea} name="new post" id="new-post" cols="30" rows="10"
-                    value={props.newPostText}
-                    onChange={changeInput}/>
+          <textarea
+            value={props.newPostText}
+            onChange={changeInput}/>
         </div>
         <div>
           <button onClick={addPost}>Add post</button>

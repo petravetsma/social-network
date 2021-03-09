@@ -2,13 +2,10 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-import {addMessageActionCreator, updateMessageTextActionCreator} from "../../redux/state";
-
+import {addMessageActionCreator, updateMessageTextActionCreator} from "../../redux/dialogs-reducer";
 
 
 const Dialogs = (props) => {
-  const newMessageTextarea = React.createRef();
-
   const usersElements = props.dialogPage.dialogs.map(user => <DialogItem name={user.name} id={user.id}/>)
   const messagesElements = props.dialogPage.messages.map(m => <Message message={m.message} from={m.from}/>)
 
@@ -32,9 +29,6 @@ const Dialogs = (props) => {
         <div>
           <textarea value={props.dialogPage.newMessageText}
                     onChange={changeInput}
-                    ref={newMessageTextarea}
-                    name="new message"
-                    id="new-message" cols="30" rows="10"
           />
         </div>
         <div>
