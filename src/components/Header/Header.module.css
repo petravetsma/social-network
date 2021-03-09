@@ -1,0 +1,18 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #a4eea4;
+  grid-area: header;
+}
+
+.header img {
+  width: 50px;
+}
+
+.header h1 {
+  font-size: 1.4em;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: #db4959;
+}

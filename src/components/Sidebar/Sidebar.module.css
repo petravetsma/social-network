@@ -1,0 +1,14 @@
+.sidebar {
+  background-color: #db4959;
+  grid-area: sidebar;
+  padding: 20px;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: white;
+}
+
+.sidebar .active {
+  color: gold;
+}

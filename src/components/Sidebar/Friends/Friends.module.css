@@ -1,0 +1,10 @@
+.friendsHeader {
+  color: #fff;
+  text-align: center;
+}
+
+.friendsWrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}

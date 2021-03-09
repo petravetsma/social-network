@@ -1,0 +1,23 @@
+.friendBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+  min-width: 50px;
+}
+
+.iconWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.iconImg {
+  width: 50px;
+  border-radius: 50%;
+}
+
+.friendText {
+  color: #fff;
+  padding-left: 10px;
+  padding-right: 10px;
+}
