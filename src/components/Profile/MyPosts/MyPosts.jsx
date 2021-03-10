@@ -1,9 +1,8 @@
 import React from 'react';
-import s from './MyPosts.module.css';
 import Post from './Post/Post';
 
 const MyPosts = (props) => {
-  const postElements = props.posts.map(v => <Post text={v.text} likes={v.likes}/>);
+  const postElements = props.posts.map(v => <Post key={v.id} text={v.text} likes={v.likes}/>);
 
   const onAddPost = () => {
     props.addPost();

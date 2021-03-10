@@ -4,8 +4,8 @@ import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 
 const Dialogs = (props) => {
-  const usersElements = props.dialogs.map(user => <DialogItem name={user.name} id={user.id}/>)
-  const messagesElements = props.messages.map(m => <Message message={m.message} from={m.from}/>)
+  const usersElements = props.dialogs.map(user => <DialogItem key={user.id} name={user.name} id={user.id}/>)
+  const messagesElements = props.messages.map(m => <Message key={m.id} message={m.message} from={m.from}/>)
 
   const onChangeInput = (event) => {
     props.changeInput(event.target.value);
