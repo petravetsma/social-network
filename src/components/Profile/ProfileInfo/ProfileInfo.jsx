@@ -1,11 +1,12 @@
 import React from 'react';
 import s from './ProfileInfo.module.css';
+import profile_wallpaper from './../../../assets/images/profile_wallpaper.jpg';
 
 const ProfileInfo = () => {
   return (
     <div>
       <div>
-        <img className={s.img} src="https://i.pinimg.com/originals/0a/4d/cb/0a4dcb92fa2d3c601b58d72720d6bec4.jpg"
+        <img className={s.img} src={profile_wallpaper}
              alt="content"/>
       </div>
       <div>
