@@ -1,7 +1,6 @@
 import React from 'react';
 import Post from './Post/Post';
 
-
 const MyPosts = (props) => {
   const postElements = props.posts.map(v => <Post key={v.id} text={v.text} likes={v.likes}/>);
 

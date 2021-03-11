@@ -1,0 +1,8 @@
+.post {
+  display: flex;
+  margin-top: 10px;
+}
+
+.postImg {
+  width: 100px;
+}
