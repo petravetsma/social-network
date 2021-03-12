@@ -10,7 +10,6 @@ import Settings from "./components/Settings/Settings";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 
-
 function App(props) {
   return (
       <div className="app-wrapper">
@@ -20,7 +19,7 @@ function App(props) {
           <Route path="/dialogs">
             <DialogsContainer/>
           </Route>
-          <Route path="/profile">
+          <Route path="/profile/:userId?">
             <Profile/>
           </Route>
           <Route path="/news">

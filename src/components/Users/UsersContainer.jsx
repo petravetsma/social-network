@@ -17,7 +17,6 @@ class UsersContainer extends React.Component {
   constructor(props) {
     super(props);
     // Change to true for request
-
     // const request = false;
     // if (request) {
     //   axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.pageCount}&count=${this.props.pageSize}`)

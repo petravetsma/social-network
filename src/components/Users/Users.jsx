@@ -1,14 +1,21 @@
 import React from 'react';
 import s from "./Users.module.css";
 import userIcon from "../../assets/images/user.png";
+import {NavLink} from "react-router-dom";
 
 const Users = (props) => {
   return (
     <div>
       <div>
-        <span onClick={() => { props.onPageChanged(props.pageCount - 1) }}>{props.pageCount - 1}</span>
-        <span onClick={() => { props.onPageChanged(props.pageCount) }}>{props.pageCount}</span>
-        <span onClick={() => { props.onPageChanged(props.pageCount + 1) }}>{props.pageCount + 1}</span>
+        <span onClick={() => {
+          props.onPageChanged(props.pageCount - 1)
+        }}>{props.pageCount - 1}</span>
+        <span onClick={() => {
+          props.onPageChanged(props.pageCount)
+        }}>{props.pageCount}</span>
+        <span onClick={() => {
+          props.onPageChanged(props.pageCount + 1)
+        }}>{props.pageCount + 1}</span>
       </div>
       <div>TOTAL USERS: {props.totalUsersCount}</div>
       <div>
@@ -18,11 +25,13 @@ const Users = (props) => {
         props.users.map(v => <div className={s.userWrap} key={v.id}>
           <div className={s.photoBtnWrap}>
             <div>
-              <img className={s.userPhoto}
-                   src={v.photos.small
-                     ? v.photos.small
-                     : userIcon}
-                   alt={v.name}/>
+              <NavLink to={`/profile/${v.id}`}>
+                <img className={s.userPhoto}
+                     src={v.photos.small
+                       ? v.photos.small
+                       : userIcon}
+                     alt={v.name}/>
+              </NavLink>
             </div>
             <div>
               {v.follow
