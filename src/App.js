@@ -18,10 +18,10 @@ function App(props) {
         <Sidebar friends={props.store.getState().sideBar.friends}/>
         <div className="app-wrapper-content">
           <Route path="/dialogs">
-            <DialogsContainer store={props.store}/>
+            <DialogsContainer/>
           </Route>
           <Route path="/profile">
-            <Profile store={props.store}/>
+            <Profile/>
           </Route>
           <Route path="/news">
             <News />
@@ -33,7 +33,7 @@ function App(props) {
             <Settings />
           </Route>
           <Route path="/users">
-            <UsersContainer store={props.store}/>
+            <UsersContainer/>
           </Route>
         </div>
       </div>
