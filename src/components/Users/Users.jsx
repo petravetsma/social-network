@@ -26,6 +26,7 @@ const Users = (props) => {
       {
         props.users.map(v => {
           console.log(v);
+
           return (
             <div className={s.userWrap} key={v.id}>
               <div className={s.photoBtnWrap}>
@@ -44,6 +45,7 @@ const Users = (props) => {
 
                       usersAPI.unfollow(v.id)
                         .then(response => {
+
                           if (response.resultCode === 0) {
                             props.unfollow(v.id);
                           }
@@ -54,6 +56,7 @@ const Users = (props) => {
 
                       usersAPI.follow(v.id)
                         .then(response => {
+
                           if (response.resultCode === 0) {
                             props.follow(v.id);
                           }
