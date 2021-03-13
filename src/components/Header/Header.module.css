@@ -1,13 +1,23 @@
 .header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   background-color: #a4eea4;
   grid-area: header;
 }
 
+.headerWrap {
+  display: flex;
+  margin-left: 20px;
+}
+
+.user {
+  margin-right: 20px;
+}
+
 .header img {
-  width: 50px;
+  width: 52px;
+  height: 49px;
 }
 
 .header h1 {
@@ -16,3 +26,5 @@
   padding-right: 10px;
   color: #db4959;
 }
+
+

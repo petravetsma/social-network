@@ -14,8 +14,6 @@ import Preloader from "../common/Preloader/Preloader";
 
 
 class UsersContainer extends React.Component {
-  constructor(props) {
-    super(props);
     // Change to true for request
     // const request = false;
     // if (request) {
@@ -65,8 +63,6 @@ class UsersContainer extends React.Component {
     //   ];
     //   props.addUsers(users);
     // }
-
-  }
 
   componentDidMount() {
     this.props.toggleFetching(true)
