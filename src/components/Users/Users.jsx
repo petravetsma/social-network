@@ -25,8 +25,6 @@ const Users = (props) => {
       </div>
       {
         props.users.map(v => {
-          console.log(v);
-
           return (
             <div className={s.userWrap} key={v.id}>
               <div className={s.photoBtnWrap}>
@@ -41,25 +39,27 @@ const Users = (props) => {
                 </div>
                 <div>
                   {v.followed
-                    ? <button className={s.btn} onClick={() => {
-
+                    ? <button disabled={props.followingInProgress.some(id => id === v.id)} className={s.btn} onClick={() => {
+                      props.toggleFollowingProgress(true, v.id);
                       usersAPI.unfollow(v.id)
                         .then(response => {
 
                           if (response.resultCode === 0) {
                             props.unfollow(v.id);
                           }
+                          props.toggleFollowingProgress(false, v.id);
                         })
 
                     }}>Unfollow</button>
-                    : <button className={s.btn} onClick={() => {
-
+                    : <button disabled={props.followingInProgress.some(id => id === v.id)} className={s.btn} onClick={() => {
+                      props.toggleFollowingProgress(true, v.id);
                       usersAPI.follow(v.id)
                         .then(response => {
 
                           if (response.resultCode === 0) {
                             props.follow(v.id);
                           }
+                          props.toggleFollowingProgress(false, v.id);
                         })
 
                     }}>Follow</button>}

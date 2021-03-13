@@ -25,20 +25,12 @@ export const usersAPI = {
       .then(response => response.data);
   },
   unfollow(userId) {
-    return axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {
-      withCredentials: true,
-      headers: {
-        "API-KEY": "589d610b-3a89-4024-a191-95da5ab1df45"
-      }
-    }).then(response => response.data)
+    return auth.delete(`follow/${userId}`)
+      .then(response => response.data);
   },
   follow(userId) {
-    return axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {},{
-      withCredentials: true,
-      headers: {
-        "API-KEY": "589d610b-3a89-4024-a191-95da5ab1df45"
-      }
-    }).then(response => response.data)
+    return auth.post(`follow/${userId}`, {},)
+      .then(response => response.data);
   }
 }
 
