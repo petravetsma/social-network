@@ -9,6 +9,7 @@ import Settings from "./components/Settings/Settings";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
+import Login from "./components/Login/Login";
 
 function App(props) {
   return (
@@ -16,11 +17,17 @@ function App(props) {
         <HeaderContainer/>
         <Sidebar friends={props.store.getState().sideBar.friends}/>
         <div className="app-wrapper-content">
+          <Route path="/profile/:userId?">
+            <ProfileContainer/>
+          </Route>
           <Route path="/dialogs">
             <DialogsContainer/>
           </Route>
-          <Route path="/profile/:userId?">
-            <ProfileContainer/>
+          <Route path="/users">
+            <UsersContainer/>
+          </Route>
+          <Route path="/login">
+            <Login />
           </Route>
           <Route path="/news">
             <News />
@@ -31,9 +38,7 @@ function App(props) {
           <Route path="/settings">
             <Settings />
           </Route>
-          <Route path="/users">
-            <UsersContainer/>
-          </Route>
+
         </div>
       </div>
   );
