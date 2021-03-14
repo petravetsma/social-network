@@ -17,7 +17,12 @@ class Status extends React.Component {
         Status:
         {this.state.editMode
           ? <div>
-            <input onBlur={this.toggleEditMode} autoFocus={true} value={this.props.status}/>
+            <input onBlur={(e) => {
+              debugger
+              this.toggleEditMode();
+              this.props.updateUserStatus(e.target.value);
+            }
+            } autoFocus={true} value={this.props.status}/>
           </div>
           : <div>
             <span onDoubleClick={this.toggleEditMode}>{this.props.status}</span>

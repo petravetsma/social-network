@@ -21,7 +21,7 @@ const auth = axios.create({
 
 export const usersAPI = {
   getUsers(currentPage, pageSize) {
-    return withCredentials.get(`users?page=${currentPage}&count=${pageSize}`, )
+    return withCredentials.get(`users?page=${currentPage}&count=${pageSize}`,)
       .then(response => response.data);
   },
   unfollow(userId) {
@@ -38,13 +38,25 @@ export const profileAPI = {
   getUserProfile(userId) {
     return base.get(`profile/${userId}`)
       .then(response => response.data);
+  },
+  getUserStatus(userId) {
+    return base.get(`profile/status/${userId}`)
+      .then(response => response.data)
+  },
+  updateUserStatus(status) {
+    return auth.put('profile/status', {status})
+      .then(response => response.data)
   }
 }
 
-export const headerAPI = {
+export const authAPI = {
   getAuth() {
     return withCredentials.get(`auth/me`)
       .then(response => response.data);
+  },
+  login(email, password, rememberMe) {
+    return auth.post('auth/login', {email, password, rememberMe})
+      .then(response => response.data)
   }
 
 }
