@@ -7,15 +7,46 @@ const ProfileInfo = (props) => {
   if (!props.profile) {
     return <Preloader/>
   }
+
+  const contacts = props.profile.contacts;
+  const contactsList = [];
+  for (const [key, value] of Object.entries(contacts)) {
+    if (value) {
+      console.log(`${key}: ${value}`);
+      contactsList.push(<li>{key}: value</li>);
+    }
+  }
+
   return (
     <div>
       <div>
         <img src={props.profile.photos.large ? props.profile.photos.large : user_icon} alt="user"/>
       </div>
       <div>
-        Hello guys! My name is {props.profile.fullName} and my ID is {props.profile.userId} .
-        { props.profile.lookingForAJob ? <p>I'm looking for a job</p> : null}
+        Hello guys! My name is {props.profile.fullName} and my ID is {props.profile.userId}.
+        <p>About me:</p>
+        <p>{props.profile.aboutMe}</p>
+        {props.profile.lookingForAJob
+          ? <div>
+            <p>I'm looking for a job</p>
+            {props.profile.lookingForAJobDescription
+              ? <div>
+                <span>Looking for a job status: </span>
+                <span>{props.profile.lookingForAJobDescription}</span>
+              </div>
+              : null}
+          </div>
+          : <p>I'm not looking for a job</p>}
       </div>
+      {contactsList.length !== 0
+        ? <div>
+          <h3>Contacts</h3>
+          <ul>
+            {contactsList}
+          </ul>
+        </div>
+        : null}
+
       <div>
         <Status status={props.status} updateUserStatus={props.updateUserStatus}/>
       </div>

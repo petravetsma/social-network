@@ -1,6 +1,6 @@
 import React from 'react';
 import Post from './Post/Post';
-import TextareaForm from "../../forms/TextareaForm/TextareaForm";
+import TextareaForm from "../../Forms/TextareaForm/TextareaForm";
 const MyPosts = (props) => {
   const postElements = props.posts.map(v => <Post key={v.id} text={v.text} likes={v.likes}/>);
 

@@ -18,7 +18,6 @@ class Status extends React.Component {
         {this.state.editMode
           ? <div>
             <input onBlur={(e) => {
-              debugger
               this.toggleEditMode();
               this.props.updateUserStatus(e.target.value);
             }

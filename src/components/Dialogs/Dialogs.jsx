@@ -2,7 +2,7 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-import TextareaForm from "../forms/TextareaForm/TextareaForm";
+import TextareaForm from "../Forms/TextareaForm/TextareaForm";
 
 const Dialogs = (props) => {
   const usersElements = props.dialogs.map(user => <DialogItem key={user.id} name={user.name} id={user.id}/>)
