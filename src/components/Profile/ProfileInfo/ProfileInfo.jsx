@@ -12,7 +12,6 @@ const ProfileInfo = (props) => {
   const contactsList = [];
   for (const [key, value] of Object.entries(contacts)) {
     if (value) {
-      console.log(`${key}: ${value}`);
       contactsList.push(<li>{key}: value</li>);
     }
   }

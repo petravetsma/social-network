@@ -54,8 +54,12 @@ export const authAPI = {
     return withCredentials.get(`auth/me`)
       .then(response => response.data);
   },
-  login(email, password, rememberMe) {
+  login(email, password, rememberMe = false) {
     return auth.post('auth/login', {email, password, rememberMe})
+      .then(response => response.data)
+  },
+  logout() {
+    return auth.delete('auth/login')
       .then(response => response.data)
   }
 
