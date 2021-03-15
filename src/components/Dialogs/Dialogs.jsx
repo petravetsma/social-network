@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './Dialogs.module.css';
+import style from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import TextareaForm from "../Forms/TextareaForm/TextareaForm";
@@ -10,7 +10,7 @@ const Dialogs = (props) => {
 
   return (
     <div>
-      <div className={s.dialogs}>
+      <div className={style.dialogs}>
         <div>
           {usersElements}
         </div>

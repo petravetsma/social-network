@@ -1,5 +1,5 @@
 import React from 'react';
-import s from "./Users.module.css";
+import style from "./Users.module.css";
 import userIcon from "../../assets/images/user.png";
 import {NavLink} from "react-router-dom";
 
@@ -25,11 +25,11 @@ const Users = (props) => {
       {
         props.users.map(v => {
           return (
-            <div className={s.userWrap} key={v.id}>
-              <div className={s.photoBtnWrap}>
+            <div className={style.userWrap} key={v.id}>
+              <div className={style.photoBtnWrap}>
                 <div>
                   <NavLink to={`/profile/${v.id}`}>
-                    <img className={s.userPhoto}
+                    <img className={style.userPhoto}
                          src={v.photos.small
                            ? v.photos.small
                            : userIcon}
@@ -38,18 +38,18 @@ const Users = (props) => {
                 </div>
                 <div>
                   {v.followed
-                    ? <button disabled={props.followingInProgress.some(id => id === v.id)} className={s.btn} onClick={() => {
+                    ? <button disabled={props.followingInProgress.some(id => id === v.id)} className={style.btn} onClick={() => {
                       props.unfollow(v.id)
 
                     }}>Unfollow</button>
-                    : <button disabled={props.followingInProgress.some(id => id === v.id)} className={s.btn} onClick={() => {
+                    : <button disabled={props.followingInProgress.some(id => id === v.id)} className={style.btn} onClick={() => {
                       props.follow(v.id)
 
                     }}>Follow</button>}
                 </div>
               </div>
-              <div className={s.textWrap}>
-                <div className={s.mainText}>
+              <div className={style.textWrap}>
+                <div className={style.mainText}>
                   <p>{v.name}</p>
                   <p>{v.status}</p>
                 </div>

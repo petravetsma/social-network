@@ -1,13 +1,13 @@
 import React from "react";
 import Friend from "./Friend/Friend";
-import s from './Friends.module.css';
+import style from './Friends.module.css';
 
 const Friends = (props) => {
   const friendElements = props.friends.map(friend => <Friend key={friend.id} name={friend.name}/>);
   return (
     <div>
-      <h3 className={s.friendsHeader}>Friends</h3>
-      <div className={s.friendsWrap}>
+      <h3 className={style.friendsHeader}>Friends</h3>
+      <div className={style.friendsWrap}>
         {friendElements}
       </div>
     </div>
