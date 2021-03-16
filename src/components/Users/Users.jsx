@@ -1,63 +1,34 @@
 import React from 'react';
-import style from "./Users.module.css";
-import userIcon from "../../assets/images/user.png";
-import {NavLink} from "react-router-dom";
+import User from "./User/User";
+import Paginator from "../common/Paginator/Paginator";
+
 
 const Users = (props) => {
-
-
+  const usersElements = props.users.map(user => {
+    return <User key={user.id}
+                 user={user}
+                 followingInProgress={props.followingInProgress}
+                 unfollow={props.unfollow}
+                 follow={props.follow}
+    />
+  });
   return (
     <div>
-      <div>
-        <span onClick={() => {
-          props.onPageChanged(props.pageCount - 1)
-        }}>{props.pageCount - 1}</span>
-        <span onClick={() => {
-          props.onPageChanged(props.pageCount)
-        }}>{props.pageCount}</span>
-        <span onClick={() => {
-          props.onPageChanged(props.pageCount + 1)
-        }}>{props.pageCount + 1}</span>
+      <div className="commentBox">
+
+      <Paginator
+        pageCount={props.pageCount}
+        onPageChange={props.onPageChange}
+        totalUsersCount={props.totalUsersCount}
+        pageSize={props.pageSize}
+      />
+
       </div>
       <div>TOTAL USERS: {props.totalUsersCount}</div>
       <div>
+        {usersElements}
       </div>
-      {
-        props.users.map(v => {
-          return (
-            <div className={style.userWrap} key={v.id}>
-              <div className={style.photoBtnWrap}>
-                <div>
-                  <NavLink to={`/profile/${v.id}`}>
-                    <img className={style.userPhoto}
-                         src={v.photos.small
-                           ? v.photos.small
-                           : userIcon}
-                         alt={v.name}/>
-                  </NavLink>
-                </div>
-                <div>
-                  {v.followed
-                    ? <button disabled={props.followingInProgress.some(id => id === v.id)} className={style.btn} onClick={() => {
-                      props.unfollow(v.id)
 
-                    }}>Unfollow</button>
-                    : <button disabled={props.followingInProgress.some(id => id === v.id)} className={style.btn} onClick={() => {
-                      props.follow(v.id)
-
-                    }}>Follow</button>}
-                </div>
-              </div>
-              <div className={style.textWrap}>
-                <div className={style.mainText}>
-                  <p>{v.name}</p>
-                  <p>{v.status}</p>
-                </div>
-              </div>
-            </div>
-          )
-        })
-      }
     </div>
   );
 }

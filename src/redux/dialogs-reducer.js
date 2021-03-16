@@ -1,4 +1,4 @@
-const SEND_MESSAGE = 'SEND-MESSAGE';
+const SEND_MESSAGE = 'community-network/dialogs/SEND_MESSAGE';
 
 const initialState = {
   dialogs: [

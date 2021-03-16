@@ -1,8 +1,8 @@
 import {profileAPI} from "../api/api";
 
-const ADD_POST = 'ADD-POST';
-const SET_USER_PROFILE = 'SET-USER-PROFILE';
-const SET_USER_STATUS = 'SET-USER-STATUS';
+const ADD_POST = 'community-network/profile/ADD_POST';
+const SET_USER_PROFILE = 'community-network/profile/SET_USER_PROFILE';
+const SET_USER_STATUS = 'community-network/profile/SET_USER_STATUS';
 
 const initialState = {
   posts: [],
@@ -10,7 +10,7 @@ const initialState = {
   status: null
 };
 
-const profileReducer = (state= initialState, action) => {
+const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_POST:
       const newPost = {
@@ -60,31 +60,25 @@ export const setUserStatus = (status) => {
 }
 
 export const getUserProfile = (userId) => {
-  return (dispatch) => {
-    profileAPI.getUserProfile(userId)
-      .then(response => {
-        dispatch(setUserProfile(response));
-      });
+  return async (dispatch) => {
+    const response = await profileAPI.getUserProfile(userId);
+    dispatch(setUserProfile(response));
   }
 }
 
 export const getUserStatus = (userId) => {
-  return (dispatch) => {
-    profileAPI.getUserStatus(userId)
-      .then(response => {
-        dispatch(setUserStatus(response));
-      })
+  return async (dispatch) => {
+    const response = await profileAPI.getUserStatus(userId);
+    dispatch(setUserStatus(response));
   }
 }
 
 export const updateUserStatus = (status) => {
-  return (dispatch) => {
-    profileAPI.updateUserStatus(status)
-      .then(response => {
-        if (response.resultCode === 0) {
-          dispatch(setUserStatus(status));
-        }
-      })
+  return async (dispatch) => {
+    const response = await profileAPI.updateUserStatus(status);
+    if (response.resultCode === 0) {
+      dispatch(setUserStatus(status));
+    }
   }
 }
 

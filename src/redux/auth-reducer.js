@@ -1,7 +1,7 @@
 import {authAPI} from "../api/api";
 
-const SET_USER_DATA = 'SET_USER_DATA';
-const AUTH_RESPONSE = 'AUTH_RESPONSE';
+const SET_USER_DATA = 'community-network/auth/SET_USER_DATA';
+const AUTH_RESPONSE = 'community-network/auth/AUTH_RESPONSE';
 
 const initialState = {
   login: null,
@@ -48,33 +48,28 @@ export const setUserData = (userId, email, login, isAuth) => (
   }
 )
 
-export const getUserData = () => (dispatch) => {
-  return authAPI.getAuth()
-    .then(response => {
-      if (response.resultCode === 0) {
-        const {id, email, login} = response.data;
-        dispatch(setUserData(id, email, login, true));
-      }
-    });
+export const getUserData = () => async (dispatch) => {
+  const response = await authAPI.getAuth();
+  if (response.resultCode === 0) {
+    const {id, email, login} = response.data;
+    dispatch(setUserData(id, email, login, true));
+  }
+  return response;
 }
 
-export const login = (email, password, rememberMe) => (dispatch) => {
-  authAPI.login(email, password, rememberMe)
-    .then(response => {
+export const login = (email, password, rememberMe) => async (dispatch) => {
+  const response = await authAPI.login(email, password, rememberMe);
       dispatch(setAuthResponse(response));
       if (response.resultCode === 0) {
         dispatch(getUserData());
       }
-    })
 }
 
-export const logout = () => (dispatch) => {
-  authAPI.logout()
-    .then(response => {
+export const logout = () => async (dispatch) => {
+  const response = await authAPI.logout();
       if (response.resultCode === 0) {
         dispatch(setUserData(null, null, null, false));
       }
-    })
 }
 
 export default authReducer;

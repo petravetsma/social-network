@@ -13,6 +13,7 @@ const StatusInput = (props) => {
   });
   return (
     <input
+      autofocus="true"
       name="status"
       onChange={formik.handleChange}
       value={formik.values.status}

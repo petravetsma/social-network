@@ -17,8 +17,9 @@ class UsersContainer extends React.Component {
     this.props.onMountGetUsers(this.props.currentPage, this.props.pageSize);
   }
 
-  onPageChanged = (pageNumber) => {
-    this.props.onUpdateGetUsers(pageNumber, this.props.pageSize);
+  onPageChange = (event, page) => {
+    debugger
+    this.props.onUpdateGetUsers(page, this.props.pageSize);
   }
 
   render() {
@@ -28,9 +29,10 @@ class UsersContainer extends React.Component {
         <Users users={this.props.users}
                totalUsersCount={this.props.totalUsersCount}
                pageCount={this.props.pageCount}
+               pageSize={this.props.pageSize}
                follow={this.props.follow}
                unfollow={this.props.unfollow}
-               onPageChanged={this.onPageChanged}
+               onPageChange={this.onPageChange}
                followingInProgress={this.props.followingInProgress}
         />
 
