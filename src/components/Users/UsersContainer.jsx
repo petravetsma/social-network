@@ -9,7 +9,8 @@ import {
 } from "../../redux/users-reducer";
 import React from "react";
 import Preloader from "../common/Preloader/Preloader";
-
+import style from "./UsersContainer.module.css";
+import Paginator from "../common/Paginator/Paginator";
 
 class UsersContainer extends React.Component {
 
@@ -18,14 +19,23 @@ class UsersContainer extends React.Component {
   }
 
   onPageChange = (event, page) => {
-    debugger
     this.props.onUpdateGetUsers(page, this.props.pageSize);
   }
 
   render() {
     return (
       <>
-        {this.props.isFetching ? <Preloader/> : null}
+        <div className={style.paginatorWrap}>
+        <Paginator
+          pageCount={this.props.pageCount}
+          onPageChange={this.onPageChange}
+          totalUsersCount={this.props.totalUsersCount}
+          pageSize={this.props.pageSize}
+        />
+        </div>
+        {this.props.isFetching ?
+          <div className={style.preloaderWrap}> <Preloader/></div>
+          : null}
         <Users users={this.props.users}
                totalUsersCount={this.props.totalUsersCount}
                pageCount={this.props.pageCount}

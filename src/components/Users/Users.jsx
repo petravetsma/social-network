@@ -1,6 +1,5 @@
 import React from 'react';
 import User from "./User/User";
-import Paginator from "../common/Paginator/Paginator";
 
 
 const Users = (props) => {
@@ -14,16 +13,6 @@ const Users = (props) => {
   });
   return (
     <div>
-      <div className="commentBox">
-
-      <Paginator
-        pageCount={props.pageCount}
-        onPageChange={props.onPageChange}
-        totalUsersCount={props.totalUsersCount}
-        pageSize={props.pageSize}
-      />
-
-      </div>
       <div>TOTAL USERS: {props.totalUsersCount}</div>
       <div>
         {usersElements}
