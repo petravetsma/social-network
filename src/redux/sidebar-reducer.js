@@ -1,4 +1,4 @@
-const initialState = {
+export const initialState = {
   friends: [
     {id: '0', name: 'Ilya'},
     {id: '1', name: 'Anton'},

@@ -8,7 +8,7 @@ const SET_CURRENT_PAGE = 'community-network/users/SET_CURRENT_PAGE';
 const TOGGLE_IS_FETCHING = 'community-network/users/TOGGLE_IS_FETCHING';
 const TOGGLE_IS_FOLLOWING_PROGRESS = 'community-network/users/TOGGLE_IS_FOLLOWING_PROGRESS';
 
-const initialState = {
+export const initialState = {
   users: [],
   pageSize: 5,
   totalUsersCount: 0,

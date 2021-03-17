@@ -4,7 +4,7 @@ const ADD_POST = 'community-network/profile/ADD_POST';
 const SET_USER_PROFILE = 'community-network/profile/SET_USER_PROFILE';
 const SET_USER_STATUS = 'community-network/profile/SET_USER_STATUS';
 
-const initialState = {
+export const initialState = {
   posts: [],
   profile: null,
   status: null
@@ -14,7 +14,7 @@ const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_POST:
       const newPost = {
-        id: String(state.posts.length),
+        id: state.posts.length,
         text: action.postText,
         likes: '0'
       };

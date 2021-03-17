@@ -2,7 +2,7 @@ import {getUserData} from "./auth-reducer";
 
 const APP_INITIALIZATION = 'community-network/app/APP_INITIALIZED';
 
-const initialState = {
+export const initialState = {
   isAppInitialized: false
 };
 

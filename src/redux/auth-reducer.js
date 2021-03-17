@@ -3,7 +3,7 @@ import {authAPI} from "../api/api";
 const SET_USER_DATA = 'community-network/auth/SET_USER_DATA';
 const AUTH_RESPONSE = 'community-network/auth/AUTH_RESPONSE';
 
-const initialState = {
+export const initialState = {
   login: null,
   email: null,
   userId: null,
