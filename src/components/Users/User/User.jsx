@@ -1,7 +1,8 @@
 import React from 'react';
-import style from "../Users.module.css";
+import style from "./User.module.css";
 import {NavLink} from "react-router-dom";
 import userIcon from "../../../assets/images/user.png";
+import {Button} from "@material-ui/core";
 
 const User = (props) => {
   return (
@@ -18,17 +19,19 @@ const User = (props) => {
         </div>
         <div>
           {props.user.followed
-            ? <button disabled={props.followingInProgress.some(id => id === props.user.id)}
+            ? <Button disabled={props.followingInProgress.some(id => id === props.user.id)}
                       className={style.btn}
                       onClick={() => {
                         props.unfollow(props.user.id)
 
-                      }}>Unfollow</button>
-            : <button disabled={props.followingInProgress.some(id => id === props.user.id)}
+                      }}
+                      variant="contained">Unfollow</Button>
+            : <Button disabled={props.followingInProgress.some(id => id === props.user.id)}
                       className={style.btn}
                       onClick={() => {
                         props.follow(props.user.id)
-                      }}>Follow</button>}
+                      }}
+                      variant="contained">Follow</Button>}
         </div>
       </div>
       <div className={style.textWrap}>

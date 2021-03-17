@@ -1,5 +1,5 @@
 import React from 'react';
-import StatusInput from "../../../Forms/TextareaForm/StatusInput";
+import StatusInput from "../../../Forms/StatusInput/StatusInput";
 
 class Status extends React.Component {
   state = {

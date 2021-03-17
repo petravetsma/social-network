@@ -1,8 +1,21 @@
 import React from 'react';
 import style from './Header.module.css';
 import {NavLink} from "react-router-dom";
+import {Button} from "@material-ui/core";
+import {makeStyles} from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: 'auto',
+    height: '28px',
+    fontSize: '0.6em',
+    padding: '5px',
+    marginLeft: '17px'
+  },
+}));
 
 const Header = (props) => {
+  const classes = useStyles();
   return (
     <header className={style.header}>
       <div className={style.headerWrap}>
@@ -13,8 +26,8 @@ const Header = (props) => {
       <div className={style.user}>
         {props.auth.isAuth
           ? <div>
-            <p>Hello, {props.auth.login}!</p>
-            <button onClick={props.logout}>Log out</button>
+            <span>Hello, {props.auth.login}!</span>
+            <Button className={classes.root} variant="contained" onClick={props.logout}>Log out</Button>
           </div>
           : <NavLink to={'/login'}>Login</NavLink>}
       </div>

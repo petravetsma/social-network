@@ -19,7 +19,7 @@ const Dialogs = (props) => {
         </div>
       </div>
       <div>
-        <div>
+        <div className={style.textFieldWrap}>
           <TextareaForm sendText={props.addMessage}/>
         </div>
       </div>

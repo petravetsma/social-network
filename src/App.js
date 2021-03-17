@@ -25,7 +25,7 @@ class App extends React.Component {
     return (
       <div className="app-wrapper">
         <HeaderContainer/>
-        <Sidebar friends={this.props.store.getState().sideBar.friends}/>
+        <Sidebar/>
         <div className="app-wrapper-content">
           <Route path="/profile/:userId?">
             <ProfileContainer/>

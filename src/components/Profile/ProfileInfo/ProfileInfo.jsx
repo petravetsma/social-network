@@ -2,6 +2,7 @@ import React from 'react';
 import Preloader from '../../common/Preloader/Preloader';
 import user_icon from '../../../assets/images/user.png'
 import Status from "./Status/Status";
+import style from "./ProfileInfo.module.css";
 
 const ProfileInfo = (props) => {
   if (!props.profile) {
@@ -17,9 +18,9 @@ const ProfileInfo = (props) => {
   }
 
   return (
-    <div>
+    <div className={style.mainWrap}>
       <div>
-        <img src={props.profile.photos.large ? props.profile.photos.large : user_icon} alt="user"/>
+        <img className={style.userImg} src={props.profile.photos.large ? props.profile.photos.large : user_icon} alt="user"/>
       </div>
       <div>
         Hello guys! My name is {props.profile.fullName} and my ID is {props.profile.userId}.
