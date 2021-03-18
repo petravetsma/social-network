@@ -9,6 +9,7 @@
   grid-template-rows: 80px 1fr;
   grid-template-columns: 1fr 5fr;
   grid-gap: 15px;
+  min-height: 100.06vh;
 }
 
 .app-wrapper-content {
