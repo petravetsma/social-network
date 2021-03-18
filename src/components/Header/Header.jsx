@@ -29,7 +29,7 @@ const Header = (props) => {
             <span>Hello, {props.auth.login}!</span>
             <Button className={classes.root} variant="contained" onClick={props.logout}>Log out</Button>
           </div>
-          : <NavLink to={'/login'}>Login</NavLink>}
+          : <NavLink to={'/login'} className={style.buttonLink}><Button className={classes.root} variant="contained">Log in</Button></NavLink>}
       </div>
     </header>
   );
