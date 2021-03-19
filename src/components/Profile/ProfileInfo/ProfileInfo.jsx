@@ -13,7 +13,7 @@ const ProfileInfo = (props) => {
   const contactsList = [];
   for (const [key, value] of Object.entries(contacts)) {
     if (value) {
-      contactsList.push(<li>{key}: value</li>);
+      contactsList.push(<li key={key}>{key}: value</li>);
     }
   }
 

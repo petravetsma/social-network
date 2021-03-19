@@ -15,7 +15,7 @@ import Paginator from "../common/Paginator/Paginator";
 class UsersContainer extends React.Component {
 
   componentDidMount() {
-    this.props.onMountGetUsers(this.props.currentPage, this.props.pageSize);
+    this.props.onMountGetUsers(this.props.pageCount, this.props.pageSize);
   }
 
   onPageChange = (event, page) => {
