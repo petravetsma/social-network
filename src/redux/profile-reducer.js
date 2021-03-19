@@ -4,6 +4,7 @@ const ADD_POST = 'community-network/profile/ADD_POST';
 const SET_USER_PROFILE = 'community-network/profile/SET_USER_PROFILE';
 const SET_USER_STATUS = 'community-network/profile/SET_USER_STATUS';
 const TOGGLE_IS_FETCHING = 'community-network/profile/TOGGLE_IS_FETCHING';
+const SAVE_PHOTO_SUCCESS = 'community-network/profile/SAVE_PHOTO_SUCCESS';
 
 export const initialState = {
   posts: [],
@@ -39,6 +40,14 @@ const profileReducer = (state = initialState, action) => {
         ...state,
         isFetching: action.isFetching
       }
+    case SAVE_PHOTO_SUCCESS:
+      return {
+        ...state,
+        profile: {
+          ...state.profile,
+          photos: action.photos
+        }
+      }
     default:
       return state;
   }
@@ -73,6 +82,13 @@ const toggleFetching = (isFetching) => {
   }
 }
 
+const savePhotoSuccess = (photos) => {
+  return {
+    type: SAVE_PHOTO_SUCCESS,
+    photos
+  }
+}
+
 export const getUserProfile = (userId) => {
   return async (dispatch) => {
     dispatch(toggleFetching(true));
@@ -94,6 +110,17 @@ export const updateUserStatus = (status) => {
     const response = await profileAPI.updateUserStatus(status);
     if (response.resultCode === 0) {
       dispatch(setUserStatus(status));
+    }
+  }
+}
+
+export const savePhoto = (photoFile) => {
+  return async (dispatch) => {
+    dispatch(toggleFetching(true));
+    const response = await profileAPI.savePhoto(photoFile);
+    dispatch(toggleFetching(false));
+    if (response.resultCode === 0) {
+      dispatch(savePhotoSuccess(response.data.photos))
     }
   }
 }

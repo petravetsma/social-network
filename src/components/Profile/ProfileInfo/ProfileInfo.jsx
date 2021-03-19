@@ -3,9 +3,9 @@ import Preloader from '../../common/Preloader/Preloader';
 import user_icon from '../../../assets/images/user.png'
 import Status from "./Status/Status";
 import style from "./ProfileInfo.module.css";
+import {Button} from "@material-ui/core";
 
 const ProfileInfo = (props) => {
-  debugger
   if (!props.profile || props.isFetching) {
     return <Preloader/>
   }
@@ -16,10 +16,33 @@ const ProfileInfo = (props) => {
       contactsList.push(<li key={key}>{key}: value</li>);
     }
   }
+
+  const onUploadPhoto = (e) => {
+    if (e.target.files.length) {
+      props.savePhoto(e.target.files[0]);
+    }
+  }
+
+  const uploadAvatarElement = <div>
+    <Button variant="contained" disableElevation>
+      <label htmlFor='avatar-img' className={style.avatarLabel}>Upload avatar</label>
+    </Button>
+
+    <input className={style.avatarInput}
+           accept=".png, .jpg, .jpeg"
+           type='file'
+           id='avatar-img'
+           onChange={onUploadPhoto}/>
+  </div>
   return (
     <div className={style.mainWrap}>
       <div>
-        <img className={style.userImg} src={props.profile.photos.large ? props.profile.photos.large : user_icon} alt="user"/>
+        <img className={style.userImg}
+             src={props.profile.photos.large ? props.profile.photos.large : user_icon}
+             alt="user"/>
+      </div>
+      <div>
+        {props.isOwner && uploadAvatarElement}
       </div>
       <div>
         Hello guys! My name is {props.profile.fullName} and my ID is {props.profile.userId}.
