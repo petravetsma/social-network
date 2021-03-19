@@ -3,11 +3,13 @@ import {profileAPI} from "../api/api";
 const ADD_POST = 'community-network/profile/ADD_POST';
 const SET_USER_PROFILE = 'community-network/profile/SET_USER_PROFILE';
 const SET_USER_STATUS = 'community-network/profile/SET_USER_STATUS';
+const TOGGLE_IS_FETCHING = 'community-network/profile/TOGGLE_IS_FETCHING';
 
 export const initialState = {
   posts: [],
   profile: null,
-  status: null
+  status: null,
+  isFetching: false
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -31,6 +33,11 @@ const profileReducer = (state = initialState, action) => {
       return {
         ...state,
         status: action.status
+      }
+    case TOGGLE_IS_FETCHING:
+      return {
+        ...state,
+        isFetching: action.isFetching
       }
     default:
       return state;
@@ -59,9 +66,18 @@ export const setUserStatus = (status) => {
   }
 }
 
+const toggleFetching = (isFetching) => {
+  return {
+    type: TOGGLE_IS_FETCHING,
+    isFetching
+  }
+}
+
 export const getUserProfile = (userId) => {
   return async (dispatch) => {
+    dispatch(toggleFetching(true));
     const response = await profileAPI.getUserProfile(userId);
+    dispatch(toggleFetching(false));
     dispatch(setUserProfile(response));
   }
 }

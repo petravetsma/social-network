@@ -6,18 +6,28 @@ import Profile from "./Profile";
 import {compose} from "redux";
 
 class ProfileContainer extends React.Component {
-  componentDidMount() {
+  refreshProfile() {
     let userId = this.props.match.params.userId;
 
     if (!userId) {
       userId = this.props.authenticatedUserId;
       if (!userId) {
-        this.props.history.push('/login')
+        this.props.history.push('/login');
       }
     }
     this.props.getUserProfile(userId);
-    this.props.getUserStatus(userId)
+    this.props.getUserStatus(userId);
+  }
 
+  componentDidMount() {
+    this.refreshProfile();
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    debugger
+    if (prevProps.match.params.userId !== this.props.match.params.userId) {
+      this.refreshProfile();
+    }
   }
 
   render() {
@@ -29,6 +39,7 @@ const mapStateToProps = (state) => {
   return {
     profile: state.profilePage.profile,
     status: state.profilePage.status,
+    isFetching: state.profilePage.isFetching,
     authenticatedUserId: state.auth.userId
   }
 }

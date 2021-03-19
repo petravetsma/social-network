@@ -6,7 +6,10 @@ import style from "./Profile.module.css";
 const Profile = (props) => {
     return (
       <div className={style.profileWrap}>
-      <ProfileInfo profile={props.profile} status={props.status} updateUserStatus={props.updateUserStatus}/>
+      <ProfileInfo profile={props.profile}
+                   status={props.status}
+                   updateUserStatus={props.updateUserStatus}
+                   isFetching={props.isFetching}/>
       <MyPostsContainer/>
     </div>
     );

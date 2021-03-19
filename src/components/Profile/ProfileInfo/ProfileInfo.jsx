@@ -5,10 +5,10 @@ import Status from "./Status/Status";
 import style from "./ProfileInfo.module.css";
 
 const ProfileInfo = (props) => {
-  if (!props.profile) {
+  debugger
+  if (!props.profile || props.isFetching) {
     return <Preloader/>
   }
-
   const contacts = props.profile.contacts;
   const contactsList = [];
   for (const [key, value] of Object.entries(contacts)) {
@@ -16,7 +16,6 @@ const ProfileInfo = (props) => {
       contactsList.push(<li key={key}>{key}: value</li>);
     }
   }
-
   return (
     <div className={style.mainWrap}>
       <div>
