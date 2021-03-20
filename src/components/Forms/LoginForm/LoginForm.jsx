@@ -2,13 +2,15 @@ import React from "react";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import {validate} from '../Validation/Validation'
 import style from './LoginForm.module.css';
+import { TextField, Switch } from 'formik-material-ui';
+import { Button } from "@material-ui/core";
 
 const LoginForm = (props) => {
   const authMessage = props.authResponse && props.authResponse.resultCode !== 0
     ? <div className={style.error}>{props.authResponse.messages.join(' ')}</div> : null;
   ;
   return (
-    <div>
+    <div className={style.formWrap}>
       <h1>Login</h1>
       <Formik validate={validate}
               initialValues={{
@@ -24,17 +26,17 @@ const LoginForm = (props) => {
       >
         <Form>
           <div>
-            <label htmlFor="email">Email</label>
             <Field
+              component={TextField}
               id="email"
               name="email"
-              placeholder="jane@acme.com"
+              placeholder="email"
               type="email"
             />
           </div>
           <div>
-            <label htmlFor="password">Password</label>
             <Field
+              component={TextField}
               id="password"
               name="password"
               placeholder="password"
@@ -43,11 +45,11 @@ const LoginForm = (props) => {
           </div>
           <div>
             <label>
-              <Field type="checkbox" name="rememberMe"/>
+              <Field type="checkbox" name="rememberMe" component={Switch}/>
               Remember Me
             </label>
           </div>
-          <button type="submit">Submit</button>
+          <Button variant="contained" color="primary" type="submit">Submit</Button>
           <ErrorMessage name="email"/>
           <ErrorMessage name="password"/>
           {authMessage}
