@@ -1,9 +1,11 @@
 import {getUserData} from "./auth-reducer";
 
 const APP_INITIALIZATION = 'community-network/app/APP_INITIALIZED';
+const ERROR_MESSAGE = 'community-network/app/ERROR_MESSAGE';
 
 export const initialState = {
-  isAppInitialized: false
+  isAppInitialized: false,
+  error: null
 };
 
 const appReducer = (state = initialState, action) => {
@@ -13,16 +15,28 @@ const appReducer = (state = initialState, action) => {
         ...state,
         isAppInitialized: true
       }
+    case ERROR_MESSAGE:
+      return {
+        ...state,
+        error: action.error
+      }
     default:
       return state;
   }
 }
 
-export const setAuthResponse = () => (
-  {
+export const setAuthResponse = () => {
+  return {
     type: APP_INITIALIZATION
   }
-)
+}
+
+export const setError = (error) => {
+  return {
+    type: ERROR_MESSAGE,
+    error
+  }
+}
 
 export const appInitialization = () => (dispatch) => {
     const promise = dispatch(getUserData());

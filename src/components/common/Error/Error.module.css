@@ -1,0 +1,45 @@
+.errorWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 99vw;
+  height: 80vh;
+}
+
+.errorBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  border-radius: 10px;
+  padding-top: 40px;
+  background-color: #fff;
+}
+
+.errorHeading {
+  margin-bottom: 0;
+}
+
+.errorText {
+  margin-bottom: 40px;
+}
+
+.errorIcon {
+  width: 70px;
+}
+
+.errorBtn {
+  padding: 20px 0;
+  outline: none;
+  border: none;
+  width: 100%;
+  background-color: #F65656;
+  color: #ffffff;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.errorBtn:hover {
+  cursor: pointer;
+}

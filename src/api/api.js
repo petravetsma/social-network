@@ -12,7 +12,7 @@ const withCredentials = axios.create({
 })
 
 const auth = axios.create({
-  baseURL: 'https://social-network.samuraijs.com/api/1.0/',
+  baseURL,
   withCredentials: true,
   headers: {
     "API-KEY": "589d610b-3a89-4024-a191-95da5ab1df45"

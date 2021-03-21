@@ -10,22 +10,38 @@ import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import Login from "./components/Login/Login";
-import {appInitialization} from "./redux/app-reducer";
+import {appInitialization, setError} from "./redux/app-reducer";
 import {connect} from "react-redux";
 import PreloaderApp from "./components/common/Preloader/PreloaderApp";
 import {Redirect, Switch} from "react-router";
 import NotFoundPage from "./components/NotFoundPage/NotFoundPage";
+import Error from "./components/common/Error/Error";
 
 class App extends React.Component {
+  handleError = (event) => {
+    debugger
+    this.props.setError(event.reason.message)
+  }
+
   componentDidMount() {
     this.props.appInitialization();
+    window.addEventListener('unhandledrejection', this.handleError)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('unhandledrejection', this.handleError)
   }
 
   render() {
 
-    if (!this.props.isAppInitialized) return <PreloaderApp/>
+    if (!this.props.isAppInitialized) {
+      if (this.props.error) return <Error setError={this.props.setError} errorText={this.props.error}/>
+      return <PreloaderApp/>
+    }
+
     return (
       <div className="app-wrapper">
+        {this.props.error && <Error errorText={this.props.error}/>}
         <HeaderContainer/>
         <Sidebar/>
         <div className="app-wrapper-content">
@@ -38,6 +54,9 @@ class App extends React.Component {
             </Route>
             <Route path="/dialogs">
               <DialogsContainer/>
+            </Route>
+            <Route path="/error">
+              <Error/>
             </Route>
             <Route path="/users">
               <UsersContainer/>
@@ -71,7 +90,8 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  isAppInitialized: state.app.isAppInitialized
+  isAppInitialized: state.app.isAppInitialized,
+  error: state.app.error
 })
 
-export default connect(mapStateToProps, {appInitialization})(App);
+export default connect(mapStateToProps, {appInitialization, setError})(App);
