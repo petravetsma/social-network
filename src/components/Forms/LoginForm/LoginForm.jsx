@@ -19,7 +19,6 @@ const LoginForm = (props) => {
                 rememberMe: false
               }}
               onSubmit={(values) => {
-
                 const {email, password, rememberMe} = values;
                 props.login(email, password, rememberMe);
               }}

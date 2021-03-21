@@ -5,6 +5,7 @@ import style from "./ProfileInfo.module.css";
 
 import ProfileInfoAvatar from "./ProfileInfoAvatar/ProfileInfoAvatar";
 import ProfileInfoData from "./ProfileInfoData/ProfileInfoData";
+import {resetResponse} from "../../../redux/profile-reducer";
 
 const ProfileInfo = (props) => {
   if (!props.profile || props.isFetching) {
@@ -15,8 +16,16 @@ const ProfileInfo = (props) => {
       <ProfileInfoAvatar isOwner={props.isOwner}
                          photos={props.profile.photos}
                          savePhoto={props.savePhoto}/>
-      <Status isOwner={props.isOwner} status={props.status} updateUserStatus={props.updateUserStatus}/>
-      <ProfileInfoData profile={props.profile}/>
+      <Status isOwner={props.isOwner}
+              status={props.status}
+              updateUserStatus={props.updateUserStatus}/>
+      <ProfileInfoData isOwner={props.isOwner}
+                       profile={props.profile}
+                       saveProfile={props.saveProfile}
+                       authenticatedUserId={props.authenticatedUserId}
+                       profileResponseMessage={props.profileResponseMessage}
+                       profileResponseCode={props.profileResponseCode}
+                       resetResponse={props.resetResponse}/>
     </div>
   );
 }

@@ -9,15 +9,6 @@
   text-align: center;
 }
 
-.formChangeSaveBtnWrap {
-  margin-bottom: 20px;
-}
-
-.upperFields {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 20px;
-}
 
 .contactsFields {
   display: flex;
@@ -27,4 +18,11 @@
 
 .contactField {
   margin: 0 10px;
+}
+
+.errorMessage {
+  margin-top: 40px;
+  color: red;
+  padding: 20px;
+  border: 4px solid red;
 }

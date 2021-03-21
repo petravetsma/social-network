@@ -11,8 +11,13 @@ const Profile = (props) => {
                    updateUserStatus={props.updateUserStatus}
                    isFetching={props.isFetching}
                    isOwner={props.isOwner}
-                   savePhoto={props.savePhoto}/>
-      <MyPostsContainer/>
+                   savePhoto={props.savePhoto}
+                   saveProfile={props.saveProfile}
+                   authenticatedUserId={props.authenticatedUserId}
+                   profileResponseMessage={props.profileResponseMessage}
+                   profileResponseCode={props.profileResponseCode}
+                   resetResponse={props.resetResponse}/>
+      <MyPostsContainer isOwner={props.isOwner}/>
     </div>
   );
 }

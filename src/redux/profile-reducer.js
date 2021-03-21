@@ -5,12 +5,19 @@ const SET_USER_PROFILE = 'community-network/profile/SET_USER_PROFILE';
 const SET_USER_STATUS = 'community-network/profile/SET_USER_STATUS';
 const TOGGLE_IS_FETCHING = 'community-network/profile/TOGGLE_IS_FETCHING';
 const SAVE_PHOTO_SUCCESS = 'community-network/profile/SAVE_PHOTO_SUCCESS';
+const SAVE_PROFILE_SUCCESS = 'community-network/profile/SAVE_PROFILE';
+const SET_PROFILE_RESPONSE_MESSAGE = 'community-network/profile/SAVE_PROFILE_RESPONSE_MESSAGE';
+const SET_PROFILE_RESPONSE_CODE = 'community-network/profile/SAVE_PROFILE_RESPONSE_CODE';
+const RESET_RESPONSE = 'community-network/profile/RESET_RESPONSE';
+
 
 export const initialState = {
   posts: [],
   profile: null,
   status: null,
-  isFetching: false
+  isFetching: false,
+  profileResponseMessage: null,
+  profileResponseCode: null
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -47,6 +54,30 @@ const profileReducer = (state = initialState, action) => {
           ...state.profile,
           photos: action.photos
         }
+      }
+    case SAVE_PROFILE_SUCCESS: // TEST !
+      return {
+        ...state,
+        profile: {
+          ...state.profile,
+          ...action.profile
+        }
+      }
+    case SET_PROFILE_RESPONSE_MESSAGE:
+      return {
+        ...state,
+        profileResponseMessage: action.response
+      }
+    case SET_PROFILE_RESPONSE_CODE:
+      return {
+        ...state,
+        profileResponseCode: action.code
+      }
+    case RESET_RESPONSE:
+      return {
+        ...state,
+        profileResponseMessage: null,
+        profileResponseCode: null
       }
     default:
       return state;
@@ -89,6 +120,33 @@ const savePhotoSuccess = (photos) => {
   }
 }
 
+const saveProfileSuccess = (profile) => {
+  return {
+    type: SAVE_PROFILE_SUCCESS,
+    profile
+  }
+}
+
+const setProfileResponseMessage = (response) => {
+  return {
+    type: SET_PROFILE_RESPONSE_MESSAGE,
+    response
+  }
+}
+
+const setProfileResponseCode = (code) => {
+  return {
+    type: SET_PROFILE_RESPONSE_CODE,
+    code
+  }
+}
+
+export const resetResponse = () => {
+  return {
+    type: RESET_RESPONSE
+  }
+}
+
 export const getUserProfile = (userId) => {
   return async (dispatch) => {
     dispatch(toggleFetching(true));
@@ -121,6 +179,20 @@ export const savePhoto = (photoFile) => {
     dispatch(toggleFetching(false));
     if (response.resultCode === 0) {
       dispatch(savePhotoSuccess(response.data.photos))
+    }
+  }
+}
+
+export const saveProfile = (profile) => {
+  return async (dispatch) => {
+    const response = await profileAPI.saveProfile(profile);
+    if (response.resultCode === 0) {
+      dispatch(setProfileResponseCode(response.resultCode))
+      dispatch(setProfileResponseMessage(null))
+      dispatch(saveProfileSuccess(response.data))
+    } else if (response.resultCode === 1) {
+      dispatch(setProfileResponseCode(response.resultCode))
+      dispatch(setProfileResponseMessage(response.messages.join(' ')))
     }
   }
 }

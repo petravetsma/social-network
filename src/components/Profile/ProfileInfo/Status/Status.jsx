@@ -1,5 +1,6 @@
 import React from 'react';
 import StatusInput from "../../../Forms/StatusInput/StatusInput";
+import style from './Status.module.css';
 
 
 class Status extends React.Component {
@@ -15,7 +16,7 @@ class Status extends React.Component {
 
   render() {
     return (
-      <div >
+      <div className={style.statusWrap}>
         <b>Status:</b>
 
         {this.props.isOwner && this.state.editMode

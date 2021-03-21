@@ -1,6 +1,13 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {getUserProfile, getUserStatus, savePhoto, updateUserStatus} from "../../redux/profile-reducer";
+import {
+  getUserProfile,
+  getUserStatus,
+  resetResponse,
+  savePhoto,
+  saveProfile,
+  updateUserStatus
+} from "../../redux/profile-reducer";
 import {withRouter} from "react-router";
 import Profile from "./Profile";
 import {compose} from "redux";
@@ -39,12 +46,15 @@ const mapStateToProps = (state) => {
     profile: state.profilePage.profile,
     status: state.profilePage.status,
     isFetching: state.profilePage.isFetching,
+    profileResponseMessage: state.profilePage.profileResponseMessage,
+    profileResponseCode: state.profilePage.profileResponseCode,
     authenticatedUserId: state.auth.userId,
   }
 }
 
 export default compose(
-  connect(mapStateToProps, {getUserProfile, getUserStatus, updateUserStatus, savePhoto}),
+  connect(mapStateToProps,
+    {getUserProfile, getUserStatus, updateUserStatus, savePhoto, saveProfile, resetResponse}),
   withRouter
 )(ProfileContainer)
 
