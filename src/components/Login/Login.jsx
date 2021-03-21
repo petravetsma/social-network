@@ -4,12 +4,15 @@ import {login} from "../../redux/auth-reducer";
 import {connect} from "react-redux";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import style from './Login.module.css';
 
 const Login = (props) => {
   return (
-    <div>
-      <h2>Login for access to messages/your profile page</h2>
-      <LoginForm login={props.login} authResponse={props.authResponse}/>
+    <div className={style.loginPageWrap}>
+      <h3 className={style.headingText}>Login to access for your messages/profile page</h3>
+      <div className={style.loginFormWrap}>
+        <LoginForm login={props.login} authResponse={props.authResponse}/>
+      </div>
     </div>
   )
 }

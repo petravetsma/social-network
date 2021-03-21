@@ -1,5 +1,5 @@
 import React from 'react';
-import preloaderImg from './../../../assets/images/preloaderApp.svg';
+import preloaderImg from './../../../assets/images/preloader.svg';
 import style from './PreloaderApp.module.css';
 
 const PreloaderApp = () => {

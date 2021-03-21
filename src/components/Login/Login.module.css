@@ -1,0 +1,16 @@
+.headingText {
+  margin: 0;
+  text-align: center;
+}
+
+.loginPageWrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.loginFormWrap {
+  text-align: center;
+}

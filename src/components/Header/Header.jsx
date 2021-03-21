@@ -3,6 +3,7 @@ import style from './Header.module.css';
 import {NavLink} from "react-router-dom";
 import {Button} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
+import icon from '../../assets/images/icon.svg';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,9 +20,8 @@ const Header = (props) => {
   return (
     <header className={style.header}>
       <div className={style.headerWrap}>
-        <img src="https://static.vecteezy.com/system/resources/previews/001/187/487/non_2x/heart-logo-png.png"
-             alt="logo"/>
-        <h1>Social Network</h1>
+        <img src={icon}/>
+        <h1>React network</h1>
       </div>
       <div className={style.user}>
         {props.auth.isAuth

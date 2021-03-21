@@ -1,5 +1,6 @@
 import React from 'react';
 import User from "./User/User";
+import style from "./Users.module.css";
 
 
 const Users = (props) => {
@@ -13,7 +14,7 @@ const Users = (props) => {
   });
   return (
     <div>
-      <div>TOTAL USERS: {props.totalUsersCount}</div>
+      <div className={style.headingText}>TOTAL USERS: {props.totalUsersCount}</div>
       <div>
         {usersElements}
       </div>

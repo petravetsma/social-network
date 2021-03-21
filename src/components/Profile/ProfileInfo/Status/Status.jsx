@@ -27,7 +27,7 @@ class Status extends React.Component {
                          updateUserStatus={this.props.updateUserStatus}/>
           </div>
           : <div>
-            <span onDoubleClick={this.toggleEditMode}>{this.props.status}</span>
+            <span onDoubleClick={this.toggleEditMode}>{this.props.status || 'Click to set your status'}</span>
           </div>
         }
       </div>

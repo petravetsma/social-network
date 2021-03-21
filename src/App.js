@@ -13,6 +13,8 @@ import Login from "./components/Login/Login";
 import {appInitialization} from "./redux/app-reducer";
 import {connect} from "react-redux";
 import PreloaderApp from "./components/common/Preloader/PreloaderApp";
+import {Redirect, Switch} from "react-router";
+import NotFoundPage from "./components/NotFoundPage/NotFoundPage";
 
 class App extends React.Component {
   componentDidMount() {
@@ -27,28 +29,41 @@ class App extends React.Component {
         <HeaderContainer/>
         <Sidebar/>
         <div className="app-wrapper-content">
-          <Route path="/profile/:userId?">
-            <ProfileContainer/>
-          </Route>
-          <Route path="/dialogs">
-            <DialogsContainer/>
-          </Route>
-          <Route path="/users">
-            <UsersContainer/>
-          </Route>
-          <Route path="/login">
-            <Login/>
-          </Route>
-          <Route path="/news">
-            <News/>
-          </Route>
-          <Route path="/music">
-            <Music/>
-          </Route>
-          <Route path="/settings">
-            <Settings/>
-          </Route>
-
+          <Switch>
+            <Route exact path="/">
+              <Redirect to="/profile"/>
+            </Route>
+            <Route path="/profile/:userId?">
+              <ProfileContainer/>
+            </Route>
+            <Route path="/dialogs">
+              <DialogsContainer/>
+            </Route>
+            <Route path="/users">
+              <UsersContainer/>
+            </Route>
+            <Route path="/login">
+              <Login/>
+            </Route>
+            <Route path="/news">
+              <div className="prototypePage">
+                <News>News Page (just for test)</News>
+              </div>
+            </Route>
+            <Route path="/music">
+              <div className="prototypePage">
+                <Music>Music Page (just for test)</Music>
+              </div>
+            </Route>
+            <Route path="/settings">
+              <div className="prototypePage">
+                <Settings>Settings Page (just for test)</Settings>
+              </div>
+            </Route>
+            <Route>
+              <NotFoundPage/>
+            </Route>
+          </Switch>
         </div>
       </div>
     );

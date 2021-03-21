@@ -1,5 +1,5 @@
 .sidebar {
-  background-color: #db4959;
+  background-color: #20232A;
   grid-area: sidebar;
   padding: 20px;
 }
@@ -10,5 +10,5 @@
 }
 
 .sidebar .active {
-  color: gold;
+  color: #61dafb;
 }

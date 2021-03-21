@@ -1,0 +1,17 @@
+.pageWrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.code {
+  color: #61dafb;
+  font-size: 10em;
+  margin: 0;
+}
+
+.text {
+  font-size: 2em;
+}
