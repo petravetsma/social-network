@@ -2,26 +2,17 @@ import axios from "axios";
 
 const baseURL = 'https://social-network.samuraijs.com/api/1.0/';
 
-const base = axios.create({
-  baseURL
-})
-
-const withCredentials = axios.create({
-  baseURL,
-  withCredentials: true
-})
-
 const auth = axios.create({
   baseURL,
   withCredentials: true,
   headers: {
-    "API-KEY": "0686b2f7-3a97-46bd-9391-975f8d00b933"
+    "API-KEY": "1a2722eb-8fb6-4333-9018-caf3decbb38f"
   }
 })
 
 export const usersAPI = {
   getUsers(currentPage, pageSize) {
-    return withCredentials.get(`users?page=${currentPage}&count=${pageSize}`,)
+    return auth.get(`users?page=${currentPage}&count=${pageSize}`,)
       .then(response => response.data);
   },
   unfollow(userId) {
@@ -36,11 +27,11 @@ export const usersAPI = {
 
 export const profileAPI = {
   getUserProfile(userId) {
-    return base.get(`profile/${userId}`)
+    return auth.get(`profile/${userId}`)
       .then(response => response.data);
   },
   getUserStatus(userId) {
-    return base.get(`profile/status/${userId}`)
+    return auth.get(`profile/status/${userId}`)
       .then(response => response.data)
   },
   updateUserStatus(status) {
@@ -64,7 +55,7 @@ export const profileAPI = {
 
 export const authAPI = {
   getAuth() {
-    return withCredentials.get(`auth/me`)
+    return auth.get(`auth/me`)
       .then(response => response.data);
   },
   login(email, password, rememberMe = false) {
