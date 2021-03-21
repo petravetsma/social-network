@@ -20,7 +20,7 @@ const Header = (props) => {
   return (
     <header className={style.header}>
       <div className={style.headerWrap}>
-        <img src={icon}/>
+        <img src={icon} alt="icon react"/>
         <h1>React network</h1>
       </div>
       <div className={style.user}>

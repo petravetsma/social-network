@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import style from './DisplayMode.module.css';
 
 function DisplayMode(props) {

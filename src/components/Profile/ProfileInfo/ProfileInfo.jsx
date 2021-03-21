@@ -2,10 +2,9 @@ import React from 'react';
 import Preloader from '../../common/Preloader/Preloader';
 import Status from "./Status/Status";
 import style from "./ProfileInfo.module.css";
-
 import ProfileInfoAvatar from "./ProfileInfoAvatar/ProfileInfoAvatar";
 import ProfileInfoData from "./ProfileInfoData/ProfileInfoData";
-import {resetResponse} from "../../../redux/profile-reducer";
+
 
 const ProfileInfo = (props) => {
   if (!props.profile || props.isFetching) {

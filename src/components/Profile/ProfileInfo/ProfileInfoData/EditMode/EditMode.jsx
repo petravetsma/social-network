@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import {Formik, Form, Field, ErrorMessage} from "formik";
+import React from "react";
+import {Formik, Form, Field} from "formik";
 import style from './EditMode.module.css';
 import {TextField, Switch} from 'formik-material-ui';
 
@@ -8,7 +8,7 @@ function EditMode(props) {
   const errorMessage = <div className={style.errorMessage}>{props.profileResponseMessage}</div>;
   const contacts = props.profile.contacts;
   const contactsListFields = [];
-  for (const [key, value] of Object.entries(contacts)) {
+  for (const [key,] of Object.entries(contacts)) {
     contactsListFields.push(<div key={key} className={style.contactField}>
       <Field id={key}
              name={key}
