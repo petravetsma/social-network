@@ -18,7 +18,7 @@ const TextareaForm = (props) => {
   });
   return (
     <form onSubmit={formik.handleSubmit}>
-      <TextField label="Outlined" variant="outlined"
+      <TextField label="Post text" variant="outlined"
                  name="messageText"
                  onChange={formik.handleChange}
                  value={formik.values.messageText}

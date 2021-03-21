@@ -7,10 +7,7 @@
   margin-bottom: 20px;
 }
 
-.avatarInput {
-  display: none;
-}
-
-.avatarLabel {
-
+.editProfileBtnWrap {
+  margin-top: 20px;
+  margin-bottom: 10px;
 }

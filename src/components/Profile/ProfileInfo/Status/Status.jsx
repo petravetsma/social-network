@@ -1,6 +1,7 @@
 import React from 'react';
 import StatusInput from "../../../Forms/StatusInput/StatusInput";
 
+
 class Status extends React.Component {
   state = {
     editMode: false
@@ -14,9 +15,10 @@ class Status extends React.Component {
 
   render() {
     return (
-      <>
-        Status:
-        {this.state.editMode
+      <div >
+        <b>Status:</b>
+
+        {this.props.isOwner && this.state.editMode
           ? <div>
             <StatusInput storeStatus={this.props.status}
                          editMode={this.state.editMode}
@@ -27,7 +29,7 @@ class Status extends React.Component {
             <span onDoubleClick={this.toggleEditMode}>{this.props.status}</span>
           </div>
         }
-      </>
+      </div>
     );
   }
 }
