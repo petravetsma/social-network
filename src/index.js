@@ -11,7 +11,7 @@ import {theme} from "./theme/theme";
 ReactDOM.render(
     <React.StrictMode>
       <Provider store={store}>
-        <BrowserRouter>
+        <BrowserRouter  basename="/social-network" >
           <ThemeProvider theme={theme}>
             <App/>
           </ThemeProvider>
