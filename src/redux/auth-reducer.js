@@ -65,10 +65,11 @@ export const login = (email, password, rememberMe) => async (dispatch) => {
       }
 }
 
-export const logout = () => async (dispatch) => {
+export const logout = (changeRoute) => async (dispatch) => {
   const response = await authAPI.logout();
       if (response.resultCode === 0) {
-        dispatch(setUserData(null, null, null, false));
+        dispatch(setUserData(null, null, null, false))
+        changeRoute()
       }
 }
 

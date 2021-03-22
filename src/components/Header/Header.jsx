@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import style from './Header.module.css';
 import {NavLink} from "react-router-dom";
 import {Button} from "@material-ui/core";
@@ -16,6 +17,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Header = (props) => {
+  const history = useHistory();
+  const routeChange = () =>{
+    let path = `/login`;
+    history.push(path);
+  }
+
   const classes = useStyles();
   return (
     <header className={style.header}>
@@ -27,7 +34,9 @@ const Header = (props) => {
         {props.auth.isAuth
           ? <div>
             <span>Hello, {props.auth.login}!</span>
-            <Button className={classes.root} variant="contained" onClick={props.logout}>Log out</Button>
+            <Button className={classes.root} variant="contained" onClick={() => {
+              props.logout(routeChange)
+            }}>Log out</Button>
           </div>
           : <NavLink to={'/login'} className={style.buttonLink}><Button className={classes.root} variant="contained">Log in</Button></NavLink>}
       </div>
