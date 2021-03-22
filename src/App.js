@@ -15,11 +15,9 @@ import {connect} from "react-redux";
 import PreloaderApp from "./components/common/Preloader/PreloaderApp";
 import {Redirect, Switch} from "react-router";
 import NotFoundPage from "./components/NotFoundPage/NotFoundPage";
-import Error from "./components/common/Error/Error";
 
 class App extends React.Component {
   handleError = (event) => {
-    debugger
     this.props.setError(event.reason.message)
   }
 
@@ -35,13 +33,11 @@ class App extends React.Component {
   render() {
 
     if (!this.props.isAppInitialized) {
-      if (this.props.error) return <Error setError={this.props.setError} errorText={this.props.error}/>
       return <PreloaderApp/>
     }
 
     return (
       <div className="app-wrapper">
-        {this.props.error && <Error errorText={this.props.error}/>}
         <HeaderContainer/>
         <Sidebar/>
         <div className="app-wrapper-content">
@@ -54,9 +50,6 @@ class App extends React.Component {
             </Route>
             <Route path="/dialogs">
               <DialogsContainer/>
-            </Route>
-            <Route path="/error">
-              <Error/>
             </Route>
             <Route path="/users">
               <UsersContainer/>

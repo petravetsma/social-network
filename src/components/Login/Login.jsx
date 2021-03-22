@@ -9,7 +9,9 @@ import style from './Login.module.css';
 const Login = (props) => {
   return (
     <div className={style.loginPageWrap}>
-      <h3 className={style.headingText}>Login to access for your messages/profile page</h3>
+      <h3 className={style.headingText}>Test account</h3>
+      <b>Email: free@samuraijs.com</b>
+      <b>Password: free</b>
       <div className={style.loginFormWrap}>
         <LoginForm login={props.login} authResponse={props.authResponse}/>
       </div>

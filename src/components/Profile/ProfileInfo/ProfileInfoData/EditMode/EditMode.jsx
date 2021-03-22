@@ -4,7 +4,6 @@ import style from './EditMode.module.css';
 import {TextField, Switch} from 'formik-material-ui';
 
 function EditMode(props) {
-  debugger
   const errorMessage = <div className={style.errorMessage}>{props.profileResponseMessage}</div>;
   const contacts = props.profile.contacts;
   const contactsListFields = [];
