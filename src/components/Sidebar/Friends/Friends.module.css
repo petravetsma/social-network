@@ -3,8 +3,14 @@
   text-align: center;
 }
 
-.friendsWrap {
+.friendWrap {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+
+@media (max-width: 500px) {
+  .friendsBlock {
+    display: none;
+  }
 }

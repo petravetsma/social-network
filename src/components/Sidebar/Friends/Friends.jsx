@@ -6,9 +6,9 @@ import {connect} from "react-redux";
 const Friends = (props) => {
   const friendElements = props.friends.map(friend => <Friend key={friend.id} name={friend.name}/>);
   return (
-    <div>
+    <div className={style.friendsBlock}>
       <h3 className={style.friendsHeader}>Friends</h3>
-      <div className={style.friendsWrap}>
+      <div className={style.friendWrap}>
         {friendElements}
       </div>
     </div>

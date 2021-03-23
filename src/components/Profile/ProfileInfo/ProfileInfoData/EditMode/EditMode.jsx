@@ -52,8 +52,6 @@ function EditMode(props) {
             mainLink: values.mainLink,
           }
         }
-        console.log(profile)
-
         props.saveProfile(profile)
       }}>
       <Form className={style.form}>

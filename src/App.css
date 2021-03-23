@@ -33,6 +33,15 @@ body {
 }
 
 
-
+@media (max-width: 500px) {
+  .app-wrapper {
+    grid-template-rows: 80px 45px 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+  "header header"
+  "sidebar sidebar"
+  "content content";
+  }
+}
 
 
