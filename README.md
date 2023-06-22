@@ -5,4 +5,4 @@ This is not a big real product app. I was exploring React and Redux and created 
 This my first medium-size app with React
 
 
-https://stengof.github.io/social-network/profile
+https://petravetsma.github.io/social-network/profile
